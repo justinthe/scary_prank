@@ -5,8 +5,8 @@ import random
 
 def main():
 	while True:	
-		n = random.randint(10, 30)
-		print(n)
+		n = random.randint(30, 120)
+		# print(n)
 		sleep(n)
 		surprise()
 
