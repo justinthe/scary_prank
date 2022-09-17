@@ -14,8 +14,8 @@ def main():
     
 def surprise():
 
-    sound_file = "res/scary.mp3"
-    image_file = "res/scr.jpg"
+    sound_file = "scary.mp3"
+    image_file = "scr.jpg"
     
     sound_path = resource_path(sound_file)
     image_path = resource_path(image_file)
