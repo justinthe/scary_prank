@@ -1,8 +1,15 @@
+# run pyinstaller on windows machine with this command:
+# pyinstaller --onefile --add-data="scary.mp3;." --add-data="scr.jpg;." --add-binary="libmpg123-0.dll;." main.pyw
+
+
 import pygame
 from time import sleep
 import random
 import sys
 import os
+
+# specifically for windows. need this to always show on top
+from ctypes import windll
 
 
 def main():
@@ -13,6 +20,8 @@ def main():
         surprise()
     
 def surprise():
+
+    SetWindowPos = windll.user32.SetWindowPos
 
     sound_file = "scary.mp3"
     image_file = "scr.jpg"
@@ -25,8 +34,12 @@ def surprise():
     window = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
     pygame.mixer.init()
     pygame.mixer.music.load(sound_path)
-    pygame.mixer.music.play()
+    pygame.mixer.music.play(loops = -1)
     image = pygame.image.load(image_path)
+
+    # make sure it always sits on top of other windows    
+    SetWindowPos(pygame.display.get_wm_info()['window'], -1, x, y, 0, 0, 0x0001)
+
     window.blit(image, (0, 0))
     pygame.display.update()
     sleep(2)
