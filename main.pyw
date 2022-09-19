@@ -1,7 +1,5 @@
 # run pyinstaller on windows machine with this command:
-# pyinstaller --onefile --add-data="scary.mp3;." --add-data="scr.jpg;." --add-binary="libmpg123-0.dll;." main.pyw
-
-# run webbrowser to disguise the app
+# pyinstaller --onefile --add-data="scary.mp3;." --add-data="scr.jpg;." --icon=firefox_icon.ico" main.pyw
 
 
 import pygame
@@ -17,10 +15,14 @@ from ctypes import windll
 
 def main():
 
+    # run webbrowser to disguise the app
     webbrowser.open("http://www.google.com")
 
     while True:	
-        n = random.randint(30, 120)
+        # n = random.randint(30, 120)
+        # randomize the surprise between 1 min to half an hour
+        n_lst = random.sample(range(60, 60*30, 60), 1)
+        n = n_lst[0]
         # print(n)
         sleep(n)
         surprise()
