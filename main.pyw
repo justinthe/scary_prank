@@ -38,7 +38,7 @@ def surprise():
     image = pygame.image.load(image_path)
 
     # make sure it always sits on top of other windows    
-    SetWindowPos(pygame.display.get_wm_info()['window'], -1, x, y, 0, 0, 0x0001)
+    SetWindowPos(pygame.display.get_wm_info()['window'], -1, 0, 0, 0, 0, 0x0001)
 
     window.blit(image, (0, 0))
     pygame.display.update()
