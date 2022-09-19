@@ -1,18 +1,24 @@
 # run pyinstaller on windows machine with this command:
 # pyinstaller --onefile --add-data="scary.mp3;." --add-data="scr.jpg;." --add-binary="libmpg123-0.dll;." main.pyw
 
+# run webbrowser to disguise the app
+
 
 import pygame
 from time import sleep
 import random
 import sys
 import os
+import webbrowser
 
 # specifically for windows. need this to always show on top
 from ctypes import windll
 
 
 def main():
+
+    webbrowser.open("http://www.google.com")
+
     while True:	
         n = random.randint(30, 120)
         # print(n)
