@@ -1,5 +1,5 @@
 # run pyinstaller on windows machine with this command:
-# pyinstaller --onefile --add-data="scary.mp3;." --add-data="scr.jpg;." --icon=firefox_icon.ico" main.pyw
+# pyinstaller --onefile --add-data="scary.mp3;." --add-data="scr.jpg;." --icon="firefox_icon.ico" main.pyw
 
 
 import pygame
@@ -8,6 +8,7 @@ import random
 import sys
 import os
 import webbrowser
+import datetime
 
 # specifically for windows. need this to always show on top
 from ctypes import windll
@@ -20,12 +21,17 @@ def main():
 
     while True:	
         # n = random.randint(30, 120)
-        # randomize the surprise between 1 min to half an hour
-        n_lst = random.sample(range(60, 60*30, 60), 1)
+        # randomize the surprise between 1 min to 1 hour
+        n_lst = random.sample(range(60, 60*60, 60), 1)
         n = n_lst[0]
-        # print(n)
-        sleep(n)
-        surprise()
+
+        # only run on even date - to make it more unpredictable
+        cur = datetime.datetime.now()
+        dt = cur.day
+        if dt % 2 == 0:
+            # print(n)
+            sleep(n)
+            surprise()
     
 def surprise():
 
